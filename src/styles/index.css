@@ -1,0 +1,20 @@
+.todocontainer{
+border-style:solid;
+border-color: rgb(0, 0, 0);
+
+margin-top: 200px;
+margin-left: 600px;
+margin-right: 600px;
+
+
+}
+
+button{
+
+    display: none;
+}
+
+.todo:hover + button, button:hover {
+    display: inline-block;
+    background-color: brown;
+}
