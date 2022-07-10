@@ -5,6 +5,7 @@ const Input = (props) => {
   
   const [input, setInput] = useState("");
   
+  
   const handleSubmit = e =>{
 
     e.preventDefault();
@@ -12,7 +13,8 @@ const Input = (props) => {
     props.onSubmit({
 
         id: Math.floor(Math.random() * 10000),
-        text: input
+        label: input,
+        done: false
 
     });
 
@@ -22,9 +24,13 @@ const Input = (props) => {
   const handleOnChange = (e) =>{
 
     setInput(e.target.value);
+  
+
 
   };
   
+
+
   return (
 
       
