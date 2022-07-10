@@ -22,9 +22,9 @@ const getTodo = () =>{
   })
   .then(data => {
       setTodos(data);
-  })
+  });
  
-}
+};
 
   
 
