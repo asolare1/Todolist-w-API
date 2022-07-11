@@ -9,10 +9,28 @@ import Todo from "./todo.jsx";
 function Home(){
 const [todos,setTodos] = useState([]);
 
+
+
+
+  const postTodo = () =>{
+fetch('https://assets.breatheco.de/apis/fake/todos/user/asolare2', {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body:[]
+  })
+  .then(resp => {
+      return resp.json(); 
+  })
+  .then(data => {
+      console.log(data);
+  });}
+
 const getTodo = () =>{
 
-  fetch('https://assets.breatheco.de/apis/fake/todos/user/asolare1', {
-    method: "Get",
+  fetch('https://assets.breatheco.de/apis/fake/todos/user/asolare2', {
+    method: "GET",
     headers: {
       "Content-Type": "application/json"
     }
@@ -23,16 +41,25 @@ const getTodo = () =>{
   .then(data => {
       setTodos(data);
   });
+
+
+
+
+
+  
  
 };
 
-  
+
+
 
 const addTodo = todo =>{
 
 const newTodos = [todo, ...todos]
 
 setTodos(newTodos);
+
+
 };
 
 const removeTodo = id =>{
@@ -50,22 +77,41 @@ const completeTodo = id =>{
       todo.isComplete = !todo.isComplete;
     };
     return todo;
+
   });
 
   setTodos(updatedTodos);
 
 
 };
+console.log(todos);
+
 
 useEffect(() =>{
-getTodo()
+getTodo();
+
+
+
 
 },[]);
 
 
 
+fetch('https://assets.breatheco.de/apis/fake/todos/user/asolare2', {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(todos)
+  })
+  .then(resp => {
+      return resp.json(); 
+  })
+  .then(data => {
+      console.log(data);
+  });
 
-
+  
   return (
     <div class="todocontainer">
       <Theheader/>
