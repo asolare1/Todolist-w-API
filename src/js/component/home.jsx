@@ -10,23 +10,6 @@ function Home(){
 const [todos,setTodos] = useState([]);
 
 
-
-
-  const postTodo = () =>{
-fetch('https://assets.breatheco.de/apis/fake/todos/user/asolare2', {
-    method: "post",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body:[]
-  })
-  .then(resp => {
-      return resp.json(); 
-  })
-  .then(data => {
-      console.log(data);
-  });}
-
 const getTodo = () =>{
 
   fetch('https://assets.breatheco.de/apis/fake/todos/user/asolare2', {
@@ -41,12 +24,6 @@ const getTodo = () =>{
   .then(data => {
       setTodos(data);
   });
-
-
-
-
-
-  
  
 };
 
@@ -116,7 +93,6 @@ fetch('https://assets.breatheco.de/apis/fake/todos/user/asolare2', {
     <div class="todocontainer">
       <Theheader/>
       <Input onSubmit={addTodo}/>
-      
       <Todo todos={todos} completeTodo={completeTodo} removeTodo={removeTodo}/>
       <footer class="footer mt-auto py-3 bg-light">
      
