@@ -63,16 +63,51 @@ const completeTodo = id =>{
 };
 console.log(todos);
 
+useEffect(() =>{
+  postTodo();
+  });
+
 
 useEffect(() =>{
 getTodo();
-
-
-
-
 },[]);
 
+const postTodo = () =>{
 
+  fetch('https://assets.breatheco.de/apis/fake/todos/user/asolare2', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify([])
+  })
+  .then(resp => {
+      return resp.json(); 
+  })
+  .then(data => {
+      console.log(data);
+  });
+
+
+
+}
+
+
+const deleteTodolist = () =>{
+
+  fetch('https://assets.breatheco.de/apis/fake/todos/user/asolare2', {
+    method: "Delete",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  })
+  
+  .then(data => {
+    setTodos([]);
+})
+
+
+}
 
 fetch('https://assets.breatheco.de/apis/fake/todos/user/asolare2', {
     method: "PUT",
@@ -100,7 +135,7 @@ fetch('https://assets.breatheco.de/apis/fake/todos/user/asolare2', {
     <span class="text-muted">{todos.filter(todo => !todo.isComplete).length} todos left</span>
   </div>
 </footer>
- <button onClick={() => setTodos([])}>Delete all</button>
+ <button onClick={() => deleteTodolist() + setTodos([]) + postTodo() }>Delete all</button>
     </div>
   );
 };
